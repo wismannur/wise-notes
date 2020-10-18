@@ -18,7 +18,7 @@ router.post('/list-notes/add', (req, res) => {
     `INSERT INTO list_notes (title, notes, created_at) VALUES (?, ?, ?)`,
     [req.body.title, req.body.notes, req.body.created_at],
 		(error, results) => {
-      console.log('results ', results);
+      // console.log('results ', results);
 			res.status(201).send({
         code: 0,
         message: 'New Note Successfully Saved.',
@@ -34,7 +34,7 @@ router.post('/list-notes/delete', (req, res) => {
     `DELETE FROM list_notes WHERE id = ? `,
     [req.body.id],
 		(error, results) => {
-      console.log('results ', results);
+      // console.log('results ', results);
 			res.status(201).send({
         code: 0,
         message: 'Note Successfully Deleted.',
@@ -50,7 +50,7 @@ router.post('/list-notes/update', (req, res) => {
     `UPDATE list_notes SET title = ?, notes = ? WHERE id = ? `,
     [req.body.title, req.body.notes, req.body.id],
 		(error, results) => {
-      console.log('results ', results);
+      // console.log('results ', results);
 			res.status(201).send({
         code: 0,
         message: 'Note Successfully Updated.',
