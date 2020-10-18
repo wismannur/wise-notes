@@ -23,12 +23,20 @@ export default {
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
 
+  /*
+  ** Server Middleware
+  */
+  serverMiddleware: {
+    '/api': '~/api'
+  },
+
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    '@nuxtjs/dotenv',
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -40,7 +48,9 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     // https://www.npmjs.com/package/@nuxtjs/markdownit
-    '@nuxtjs/markdownit'
+    '@nuxtjs/markdownit',
+    // Doc: https://http.nuxtjs.org
+    '@nuxt/http',
   ],
   // for inject markdown-it with call $md
   markdownit: {
@@ -62,6 +72,13 @@ export default {
       'markdown-it-sub',
       'markdown-it-sup',
     ]
+  },
+
+  env: {
+    dbhost: process.env.dbhost,
+    dbuser: process.env.dbuser,
+    dbpassword: process.env.dbpassword,
+    database: process.env.database,
   },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
