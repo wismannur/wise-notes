@@ -13,8 +13,23 @@
   "dependencies": {
     "@nuxt/content": "^1.9.0",
     "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/markdownit": "^1.2.10",
     "@nuxtjs/pwa": "^3.0.2",
     "core-js": "^3.6.5",
+    "jquery": "^3.5.1",
+    "markdown-it-abbr": "^1.0.4",
+    "markdown-it-attrs": "^3.0.3",
+    "markdown-it-container": "^3.0.0",
+    "markdown-it-deflist": "^2.1.0",
+    "markdown-it-div": "^1.1.0",
+    "markdown-it-emoji": "^2.0.0",
+    "markdown-it-footnote": "^3.0.2",
+    "markdown-it-for-inline": "^0.1.1",
+    "markdown-it-ins": "^3.0.0",
+    "markdown-it-mark": "^3.0.0",
+    "markdown-it-sub": "^1.0.0",
+    "markdown-it-sup": "^1.0.0",
+    "markdown-it-testgen": "^0.1.6",
     "nuxt": "^2.14.6"
   },
   "devDependencies": {

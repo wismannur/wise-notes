@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+require('events').EventEmitter.defaultMaxListeners = 10
 
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
@@ -38,7 +39,30 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    // https://www.npmjs.com/package/@nuxtjs/markdownit
+    '@nuxtjs/markdownit'
   ],
+  // for inject markdown-it with call $md
+  markdownit: {
+    injected: true,
+    preset: 'default',
+    linkify: true,
+    breaks: true,
+    use: [
+      'markdown-it-div',
+      'markdown-it-attrs',
+      'markdown-it-abbr',
+      'markdown-it-container',
+      'markdown-it-deflist',
+      'markdown-it-emoji',
+      'markdown-it-footnote',
+      'markdown-it-for-inline',
+      'markdown-it-ins',
+      'markdown-it-mark',
+      'markdown-it-sub',
+      'markdown-it-sup',
+    ]
+  },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
