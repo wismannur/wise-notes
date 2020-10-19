@@ -305,7 +305,7 @@ export default {
         created_at: moment(new Date()).format('DD-MM-YYYY HH:mm:ss'),
       }
 
-      await axios.post(this.$api.addlistNotes(), body).then(async (res) => {
+      await axios.post(this.$api.addListNotes(), body).then(async (res) => {
         // console.log('result add new notes ', res)
         this.loadingNewNote = false
         await this.getAllNotes()
