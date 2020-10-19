@@ -302,7 +302,7 @@ export default {
       const body = {
         title: 'Untitled.',
         notes: '# This is a New Note.',
-        created_at: moment(new Date()).format('DD-MM-YYYY HH:mm:ss'),
+        created_at: moment(new Date()).format('YYYY-MM-DD HH:mm:ss'),
       }
 
       await axios.post(this.$api.addListNotes(), body).then(async (res) => {
@@ -366,7 +366,7 @@ export default {
         id: this.listSelected.id,
         title: this.listSelected.title,
         notes: this.listSelected.notes,
-        updated_at: moment(new Date()).format('DD-MM-YYYY HH:mm:ss'),
+        updated_at: moment(new Date()).format('YYYY-MM-DD HH:mm:ss'),
       }
 
       axios.post(this.$api.updateListNotes(), body).then((res) => {
