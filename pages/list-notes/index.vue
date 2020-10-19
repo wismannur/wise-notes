@@ -240,7 +240,7 @@ export default {
   components: {},
   async asyncData({ $http, $api }) {
     const listNotes = await $http.$get($api.listNotes())
-    const sortedList = listNotes.reverse()
+    const sortedList = listNotes
     const firstVal = sortedList.map((e) => {
       const obj = {
         id: e.id,
@@ -314,7 +314,7 @@ export default {
     async getAllNotes() {
       const http = this.$http
       const listNotes = await http.$get(this.$api.listNotes())
-      const sortedList = listNotes.reverse()
+      const sortedList = listNotes
       const firstVal = sortedList.map((e) => {
         const obj = {
           id: e.id,
@@ -366,9 +366,10 @@ export default {
         id: this.listSelected.id,
         title: this.listSelected.title,
         notes: this.listSelected.notes,
+        updated_at: moment(new Date()).format('DD-MM-YYYY HH:mm:ss'),
       }
 
-      axios.post(this.$api.deleteListNotes(), body).then((res) => {
+      axios.post(this.$api.updateListNotes(), body).then((res) => {
         // console.log('fix update note ', res)
         $('#csLoader' + this.listSelected.id).hide()
       })

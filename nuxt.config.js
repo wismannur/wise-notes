@@ -77,7 +77,8 @@ export default {
   },
 
   env: {
-    API_HOST: process.env.API_HOST,
+    API_HOST: process.env.DEV_HOST,
+    // API_HOST: process.env.PROD_HOST,
   },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
