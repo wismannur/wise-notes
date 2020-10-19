@@ -35,7 +35,6 @@
     "markdown-it-sup": "^1.0.0",
     "markdown-it-testgen": "^0.1.6",
     "moment": "^2.29.1",
-    "mysql": "^2.18.1",
     "nuxt": "^2.14.6"
   },
   "devDependencies": {

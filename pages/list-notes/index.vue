@@ -238,8 +238,8 @@ export default {
   name: 'ListNotesIndex',
   layout: 'lyt-list-notes',
   components: {},
-  async asyncData({ $http }) {
-    const listNotes = await $http.$get('/api/list-notes')
+  async asyncData({ $http, $api }) {
+    const listNotes = await $http.$get($api.listNotes())
     const sortedList = listNotes.reverse()
     const firstVal = sortedList.map((e) => {
       const obj = {
@@ -305,20 +305,15 @@ export default {
         created_at: moment(new Date()).format('DD-MM-YYYY HH:mm:ss'),
       }
 
-      await axios
-        .post('/api/list-notes/add', body)
-        .then(async (res) => {
-          console.log('result add new notes ', res)
-          this.loadingNewNote = false
-          await this.getAllNotes()
-        })
-        .catch((err) => {
-          console.log('error add notes ', err)
-        })
+      await axios.post(this.$api.addlistNotes(), body).then(async (res) => {
+        // console.log('result add new notes ', res)
+        this.loadingNewNote = false
+        await this.getAllNotes()
+      })
     },
     async getAllNotes() {
       const http = this.$http
-      const listNotes = await http.$get('/api/list-notes')
+      const listNotes = await http.$get(this.$api.listNotes())
       const sortedList = listNotes.reverse()
       const firstVal = sortedList.map((e) => {
         const obj = {
@@ -346,17 +341,12 @@ export default {
         id: this.listSelected.id,
       }
 
-      await axios
-        .post('/api/list-notes/delete', body)
-        .then(async (res) => {
-          console.log('fix delete note ', res)
-          this.loadingDeleteNote = false
-          this.dialogDeleteData = false
-          await this.getAllNotes()
-        })
-        .catch((err) => {
-          console.log('error delete ', err)
-        })
+      await axios.post(this.$api.deleteListNotes(), body).then(async (res) => {
+        // console.log('fix delete note ', res)
+        this.loadingDeleteNote = false
+        this.dialogDeleteData = false
+        await this.getAllNotes()
+      })
     },
     chooseList(item) {
       this.listSelected = item
@@ -378,15 +368,10 @@ export default {
         notes: this.listSelected.notes,
       }
 
-      axios
-        .post('/api/list-notes/update', body)
-        .then((res) => {
-          console.log('fix update note ', res)
-          $('#csLoader' + this.listSelected.id).hide()
-        })
-        .catch((err) => {
-          console.log('error update note ', err)
-        })
+      axios.post(this.$api.deleteListNotes(), body).then((res) => {
+        // console.log('fix update note ', res)
+        $('#csLoader' + this.listSelected.id).hide()
+      })
     },
   },
 }
